@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Space Rush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@500&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.js"></script>
+</head>
+<body>
+
+    <script type="module">
+
+    import { GameScene } from "./js/game.js";
+
+    const phaserConfig =
+    {
+        type: Phaser.AUTO,
+        parent: "game",
+        scale: {
+            mode: Phaser.Scale.FIT,
+            autoCenter: Phaser.Scale.CENTER_BOTH,
+            width: 1600,
+            height: 800,
+        },
+        pixelArt: true,
+        physics: {
+            default: "arcade",
+            arcade:
+            {
+                debug: false,
+            }
+        },
+        scene: [GameScene],
+        fps: 60,
+        backgroundColor: "0x000012",
+        backgroundImage: "assets/background.png"
+    };
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const maxWidthThreshold = 600;
+    const maxHeightThreshold = 600;
+
+    if (screenWidth <= maxWidthThreshold || screenHeight <= maxHeightThreshold) {
+        // Update game configuration for smaller screens
+        phaserConfig.scale.mode = Phaser.Scale.STRETCH;
+        changeOrientation();
+        const game = new Phaser.Game(phaserConfig);
+    } else {
+        const game = new Phaser.Game(phaserConfig);
+    }
+
+    // This doesn't work on desktop browser emulators
+    function changeOrientation() {
+        const currentOrientation = window.screen.orientation.type;
+
+        if (currentOrientation !== 'landscape-primary' && currentOrientation !== 'landscape-secondary') {
+            window.screen.orientation.lock("landscape-primary").then(() => {
+            }).catch((error) => {
+                console.error("Failed to lock orientation:", error);
+            });
+        }
+    }
+    </script>
+</body>
+</html>
+
+<!-- 
+Song credits
+Phyrnna - The Adventures Of Captain 8 Bit!
+Waterflame - Electroman Adventures
+Antti Martikainen - One Against the World
+RIOT - Overkill
+-->
