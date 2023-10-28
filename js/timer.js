@@ -23,7 +23,7 @@ export function createTimerText(scene) {
         delay: 9,
         callback: () => {
             if (scene.player.active) {
-                timerCount += 0.01;
+                timerCount += 0.001;
                 timerText.setText(timerCount.toFixed(2));
             } else {
                 timer.remove(false);
