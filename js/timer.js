@@ -20,10 +20,10 @@ export function createTimerText(scene) {
 
     // Update the timer and stop it once the player dies
     const timer = scene.time.addEvent({
-        delay: 9,
+        delay: 10,
         callback: () => {
             if (scene.player.active) {
-                timerCount += 0.001;
+                timerCount += 0.01;
                 timerText.setText(timerCount.toFixed(2));
             } else {
                 timer.remove(false);
