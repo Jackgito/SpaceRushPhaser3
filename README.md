@@ -5,3 +5,5 @@ The game challenges players to navigate a spaceship through an asteroid field, a
 The intensity of the game increases over time, providing an engaging experience for players.
 
 The game has been tested on multiple browsers, but it doesn't work well with mobile devices.
+
+![image](https://github.com/Jackgito/SpaceRushPhaser3/assets/102518689/57c9d090-6f73-4642-b33e-f1f54268ab62)
